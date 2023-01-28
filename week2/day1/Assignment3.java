@@ -33,7 +33,7 @@ public class Assignment3 {
 		WebElement findElement2 = driver.findElement(By.id("createLeadForm_firstName"));
 		findElement2.clear();
 		findElement2.sendKeys("NewName");
-		driver.findElement(By.name("submitButton"));
+		driver.findElement(By.name("submitButton")).click();
 		System.out.println("New Title is: "+ driver.getTitle());
 	}
 
