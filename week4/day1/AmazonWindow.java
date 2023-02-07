@@ -36,7 +36,7 @@ public class AmazonWindow {
 		driver.findElement(By.id("add-to-cart-button")).click();
 		String text2 = driver.findElement(By.xpath("//span[contains(@class ,'sw-subtotal-amount')]//span[@class = 'a-price-whole']")).getText();
 		if(text.equals(text2))System.out.println("Sub total is correct");
-		
+		driver.close();
 
 	}
 
