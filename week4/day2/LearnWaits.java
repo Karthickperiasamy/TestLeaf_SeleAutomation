@@ -36,7 +36,10 @@ public class LearnWaits {
 		
 		driver.findElement(By.xpath("//h5[text()= 'Wait for Text Change (1 - 10 Sec)']/following-sibling::div//span[text()='Click']")).click();
 		WebElement change = driver.findElement(By.xpath("//span[text()= 'I am going to change!']"));
-		wait.until(ExpectedConditions.attributeToBe(change, null, null));
+		wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.xpath("(//span[@class = 'ui-button-text ui-c'])[7]"), "I am going to change!")));
+		System.out.println("Updated text value is: " + driver.findElement(By.xpath("(//span[@class = 'ui-button-text ui-c'])[7]")).getText() );		
+		
+		//attribute to change
 		
 		
 		

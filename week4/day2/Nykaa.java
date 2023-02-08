@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 public class Nykaa {
-   //Exception in thread "main" org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//p[text()= 'You Pay']/parent::div/following-sibling::div/p"}
+   //
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
@@ -74,7 +74,10 @@ public class Nykaa {
 		driver.switchTo().defaultContent();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//button[text()= 'Continue as guest']")).click();
-		System.out.println( "Final Total is+ " + driver.findElement(By.xpath("//p[text()= 'You Pay']/parent::div/following-sibling::div/p")).getText());
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//p[text()= 'New Address']/parent::div/parent::div//img")).click();
+		Thread.sleep(1000);
+		System.out.println( "Final Total is+ " + driver.findElement(By.xpath("//p[text()= 'Price Details']/parent::div/following-sibling::p")).getText());
 		//driver.quit();		
 		
 	}

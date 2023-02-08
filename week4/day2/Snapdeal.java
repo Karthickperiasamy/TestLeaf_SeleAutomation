@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 //why both thread.sleep & implicit wait?
+//sorting not in order.
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -62,7 +63,7 @@ public class Snapdeal {
 		System.out.println( "Price is: " + driver.findElement(By.xpath("//span[@class = 'payBlkBig']")).getText());
 		System.out.println( "Discount is: " + driver.findElement(By.xpath("//span[@class = 'percent-desc ']")).getText());
 		File screenshot = driver.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenshot, new File("./screen.png"));		
+		FileUtils.copyFile(screenshot, new File("./Snapdeal/screen.png"));		
 		
 	}
 
