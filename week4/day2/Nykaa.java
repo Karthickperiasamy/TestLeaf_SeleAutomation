@@ -1,6 +1,9 @@
 package week4.day2;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 public class Nykaa {
-
+   //Exception in thread "main" org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//p[text()= 'You Pay']/parent::div/following-sibling::div/p"}
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
@@ -30,14 +33,50 @@ public class Nykaa {
 		.moveToElement(brandSearch)
 		.click().sendKeys("L'Oreal Paris").pause(Duration.ofSeconds(1)).click(Loreal)
 		.perform();
-		Thread.sleep(0);
+		Thread.sleep(1000);
 		System.out.println("Page Title is: " + driver.getTitle());
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Sort By : popularity']")).click();
+		Thread.sleep(1000);
 		driver.findElement(By.xpath("//span[text()='customer top rated']/parent::div/following-sibling::div")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Category']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Hair']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Hair Care']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Shampoo']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Concern']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Color Protection']")).click();
+		Thread.sleep(1000);
+		if((driver.findElement(By.xpath("//span[text()='Shampoo']")).isDisplayed()== true)) {
+			Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[text() =\"L'Oreal Paris Colour Protect Shampoo\"]")).click();}
+		String mainHandle = driver.getWindowHandle();
+		Set<String> allHandles = driver.getWindowHandles();
+		List<String> handlesList =  new ArrayList<String> (allHandles);
+		driver.switchTo().window(handlesList.get(1));
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()= '180ml']")).click();
+		System.out.println("MRP is : " + driver.findElement(By.xpath("//span[text() = 'MRP:']/following-sibling::span")).getText());
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text() = 'Add to Bag']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//button[@type='button']//*[name()='svg']")).click();
+		WebElement frame = driver.findElement(By.xpath("//iframe"));
+		driver.switchTo().frame(frame);
+		System.out.println("Grand Total is: " + driver.findElement(By.xpath("//span[text()= \"Grand Total\"]//parent::div/preceding-sibling::div/span")).getText());
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text() ='Proceed']")).click();
+		driver.switchTo().defaultContent();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//button[text()= 'Continue as guest']")).click();
+		System.out.println( "Final Total is+ " + driver.findElement(By.xpath("//p[text()= 'You Pay']/parent::div/following-sibling::div/p")).getText());
+		//driver.quit();		
 		
-		
-		
-		
-
 	}
 
 }
