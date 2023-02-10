@@ -2,6 +2,7 @@ package week4.day2;
 
 // Instead of 4 , frame count only showing 3. Please check4 - logic for innner frame
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -24,8 +25,21 @@ public class LearnFrame {
 		driver.switchTo().frame("frame2");
 		driver.findElement(By.id("Click")).click();
 		driver.switchTo().defaultContent();
-		int size = driver.findElements(By.tagName("iframe")).size();
-		System.out.println("Number of frames in this page is: " + size);
+		
+		List<WebElement> outerFrame = driver.findElements(By.tagName("iframe"));
+		int count = outerFrame.size();
+        System.out.println("Total Number of Frames : "+count);
+		int count1 = 0;
+		count1 = count + outerFrame.size();
+		System.out.println("outerframe"+count);
+        for (int i = 0; i < outerFrame.size(); i++) {
+		driver.switchTo().frame(i);
+		List<WebElement> innerFrame = driver.findElements(By.tagName("iframe"));
+		count1 = count +innerFrame.size();
+		driver.switchTo().defaultContent();
+        }
+        
+        System.out.println("Total frame count is: " + count1);
 
 	}
 
