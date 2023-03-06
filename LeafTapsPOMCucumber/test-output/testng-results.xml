@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="15986" started-at="2023-03-05T18:03:16 IST" finished-at="2023-03-05T18:03:32 IST">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Default test" duration-ms="15986" started-at="2023-03-05T18:03:16 IST" finished-at="2023-03-05T18:03:32 IST">
+      <class name="com.leaftaps.testcases.Runner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="setUpClass" is-config="true" duration-ms="691" started-at="2023-03-05T18:03:16 IST" finished-at="2023-03-05T18:03:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="preCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="preCondition" is-config="true" duration-ms="9563" started-at="2023-03-05T18:03:17 IST" finished-at="2023-03-05T18:03:27 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preCondition -->
+        <test-method status="PASS" signature="preCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="preCondition" is-config="true" duration-ms="9741" started-at="2023-03-05T18:03:17 IST" finished-at="2023-03-05T18:03:27 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preCondition -->
+        <test-method status="PASS" signature="preCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="preCondition" is-config="true" duration-ms="9896" started-at="2023-03-05T18:03:17 IST" finished-at="2023-03-05T18:03:27 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preCondition -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="runScenario" duration-ms="2327" started-at="2023-03-05T18:03:27 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-05T18:03:29 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Postive flow"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Login to Leaftaps]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="runScenario" duration-ms="2130" started-at="2023-03-05T18:03:27 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-05T18:03:29 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Negative flow"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Login to Leaftaps]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="runScenario" duration-ms="1902" started-at="2023-03-05T18:03:27 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-03-05T18:03:29 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Postive flow"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Login to Leaftaps]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="postCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="postCondition" is-config="true" duration-ms="325" started-at="2023-03-05T18:03:29 IST" finished-at="2023-03-05T18:03:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="postCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="postCondition" is-config="true" duration-ms="320" started-at="2023-03-05T18:03:29 IST" finished-at="2023-03-05T18:03:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="postCondition()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="postCondition" is-config="true" duration-ms="344" started-at="2023-03-05T18:03:29 IST" finished-at="2023-03-05T18:03:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.leaftaps.testcases.Runner@51b279c9]" name="tearDownClass" is-config="true" duration-ms="3003" started-at="2023-03-05T18:03:29 IST" finished-at="2023-03-05T18:03:32 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.leaftaps.testcases.Runner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
