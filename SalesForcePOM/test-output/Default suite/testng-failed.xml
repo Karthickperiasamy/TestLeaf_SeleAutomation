@@ -3,11 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.salesforce.testcases.TC002_CreateOpportunityWithoutMandatoryFields">
+      <class name="com.salesforce.testcases.TC001_CreateOpportunity">
         <methods>
-          <include name="runCreateOpportunityWithoutMandatoryFields"/>
+          <include name="setData"/>
+          <include name="runCreateOpportunity" invocation-numbers="0"/>
+          <include name="postCondition"/>
+          <include name="preCondition"/>
         </methods>
-      </class> <!-- com.salesforce.testcases.TC002_CreateOpportunityWithoutMandatoryFields -->
+      </class> <!-- com.salesforce.testcases.TC001_CreateOpportunity -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
