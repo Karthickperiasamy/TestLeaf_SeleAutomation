@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "9108f5ca-e3c0-43d9-afd4-ebde7ca695e8",
+		"name": "ServiceNow_OAuth_Via_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5092953"
+	},
+	"item": [
+		{
+			"name": "GenerateOAuth-Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp=pm.response.json();\r",
+							"var token=resp.access_token;\r",
+							"console.log(token)\r",
+							"pm.globals.set(\"accesstoken\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "b6d7218d662de110f6a42046471520ca",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "N<OKbOX}Vw",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P-qQ7@umSYz8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev140572.service-now.com/oauth_token.do",
+					"protocol": "https",
+					"host": [
+						"dev140572",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"oauth_token.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Incident Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test.skip(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Incident Preifx Validation\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"INC\");\r",
+							"});\r",
+							"\r",
+							"var resp=pm.response.json();\r",
+							"var sys_id=resp.result.sys_id;\r",
+							"console.log(sys_id)\r",
+							"//pm.globals.set(\"systemID\", \"variable_value\");\r",
+							"pm.globals.set(\"systemID\", sys_id);\r",
+							"// Variable key -Name of the variable created in Globals\r",
+							"// Variable value -- Value of sysid which has been extracted from response and saved as a variable\r",
+							"// Set variable key wihin double quotes \r",
+							"// Variable value should not have double quotes\r",
+							"\r",
+							"pm.globals.set(\"variable_key\", \"variable_value\");\r",
+							"\r",
+							"var IncNum=resp.result.number;\r",
+							"\r",
+							"pm.collectionVariables.set(\"number\", IncNum);\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer -tFNdrMILrskdMgbTBmhhiHLAbBb_hrxJNrmoExUKpv2LXMDRBkzx610yWo_YeYnM_-0VdK02I4MQwMGTRBCvQ",
+						"description": " ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"{{short_description}}\",\r\n    \"short_description\": \"{{description}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev146547.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev146547",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "number",
+			"value": ""
+		}
+	]
+}

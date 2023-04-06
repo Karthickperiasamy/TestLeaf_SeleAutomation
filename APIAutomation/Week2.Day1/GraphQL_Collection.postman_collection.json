@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "6cc9a9d6-669b-4d85-864f-7f71e0b8ce40",
+		"name": "GraphQL_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5092953"
+	},
+	"item": [
+		{
+			"name": "GraphQL",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\r\n  countries {\r\n    code\r\n    name\r\n    emoji\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://countries.trevorblades.com",
+					"protocol": "https",
+					"host": [
+						"countries",
+						"trevorblades",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

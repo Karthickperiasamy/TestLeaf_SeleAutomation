@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "59838815-6281-4b43-8c4b-9f242d16e6d6",
+		"name": "JIRA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5092953"
+	},
+	"item": [
+		{
+			"name": "CreateIssue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF0mjJ8cSry6crHqWmb7K_mCVWpO-gn3VxeFn7CtBisEjj_Zi1CJYfUsJS4NA8nODMhB4eQWjzfrHsKk00FV3dyoCh6dHeml795M46Yvp8-pzDgbewSRhsezyujgWXh5VqRJTvgsb-OkhSpeKIfiWnvtCVPGlliDPUSy7pKE636x7I=17FEF879",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "karthickkumarrp@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"KR\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Bug\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://marbatchapi.atlassian.net/rest/api/2/issue/",
+					"protocol": "https",
+					"host": [
+						"marbatchapi",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
