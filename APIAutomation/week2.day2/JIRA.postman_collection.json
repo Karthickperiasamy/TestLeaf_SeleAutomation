@@ -15,28 +15,18 @@
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"});\r",
+							"\r",
+							"Resp=pm.response.json();\r",
+							"pm.collectionVariables.set(\"IssueID\",Resp.id);\r",
+							"\r",
+							"pm.collectionVariables.set(\"IssueKey\",Resp.key);"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "ATATT3xFfGF0mjJ8cSry6crHqWmb7K_mCVWpO-gn3VxeFn7CtBisEjj_Zi1CJYfUsJS4NA8nODMhB4eQWjzfrHsKk00FV3dyoCh6dHeml795M46Yvp8-pzDgbewSRhsezyujgWXh5VqRJTvgsb-OkhSpeKIfiWnvtCVPGlliDPUSy7pKE636x7I=17FEF879",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "karthickkumarrp@gmail.com",
-							"type": "string"
-						}
-					]
-				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -49,12 +39,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://marbatchapi.atlassian.net/rest/api/2/issue/",
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/",
 					"protocol": "https",
 					"host": [
-						"marbatchapi",
-						"atlassian",
-						"net"
+						"{{JIRAURL}}"
 					],
 					"path": [
 						"rest",
@@ -66,6 +54,375 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "SearchIssueID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/{{IssueID}}",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchIssueKey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/KR-1",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"KR-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditIssueID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": \"Bug creation Using REST API for testing\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/{{IssueID}}",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditIssueKey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": \"ID Bug creation Using REST API for testing\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/{{IssueKey}}",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueKey}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/10001",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteByKey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issue/KR-4",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"KR-4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchAllIssues",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "jql",
+						"value": "project=\"KarthickNew\"",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/search?",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListAllIssueTypes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issuetype",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issuetype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListIssueTypeWithID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{JIRAURL}}/rest/api/2/issuetype/10004",
+					"protocol": "https",
+					"host": [
+						"{{JIRAURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issuetype",
+						"10004"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ATATT3xFfGF0d1Idrf-XukcMjNOakf6JMyym3B-2W14tBap6lj93E0ge4yo44qJoTjmvTNshOKGJKKNywhw878sRZWR9YbvAtogOHA7Qgnz0tSzsaqTB1As1obqo2mtQuKo926GSidHCWjwL1cUbqEPtF7yzcy_KwpJfMwLWFewJbzyfDrQM2U4=D7CB1458",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "karthickkumarrp@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "IssueID",
+			"value": ""
+		},
+		{
+			"key": "IssueKey",
+			"value": ""
+		},
+		{
+			"key": "JIRAURL",
+			"value": "marbatchapi.atlassian.net"
 		}
 	]
 }
