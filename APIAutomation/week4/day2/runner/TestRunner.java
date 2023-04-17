@@ -1,12 +1,13 @@
-package week4.day1.runner;
+package week4.day2.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-		features="src/test/java/week4/day1/features/getIncidents.feature",
-		glue="week4.day1.steps"
+		features="src/test/java/week4/day2/features/Asmt34hooks.feature",
+		glue={"week4.day2.steps","week4.day2.hooks"},
+		tags = "@Create"
 		
 		
 		)
@@ -14,3 +15,4 @@ import io.cucumber.testng.CucumberOptions;
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 }
+

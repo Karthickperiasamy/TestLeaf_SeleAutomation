@@ -19,12 +19,12 @@ public class TestSteps {
 	
 	@Given("set the endpoint")
 	public void setEndpoint() {
-		RestAssured.baseURI = "https://dev125568.service-now.com/api/now/table/incident";
+		RestAssured.baseURI = "https://dev146547.service-now.com/api/now/table/incident";
 	}
 	
 	@And("add the auth")
 	public void addAuth() {
-		RestAssured.authentication = RestAssured.basic("admin", "jM@5Rfg3Ht$V");
+		RestAssured.authentication = RestAssured.basic("admin", "csG0Tr=1xUM^");
 	}
 	
 	@When("send the request")
