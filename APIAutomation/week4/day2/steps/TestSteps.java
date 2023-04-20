@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matchers;
 
 import io.cucumber.datatable.DataTable;
@@ -22,6 +23,7 @@ public class TestSteps {
 	RequestSpecification request = null;
 	Response response = null;
 	 static String sys_id=null;
+	 String value = RandomStringUtils.randomAlphanumeric(6);
 
 	@Given("set the endpoint")
 	public void setEndpoint() {
@@ -35,7 +37,7 @@ public class TestSteps {
 
 	@When("send the request")
 	public void sendRequest() {
-		request = RestAssured.given().contentType(ContentType.JSON);
+		request = RestAssured.given().log().all().contentType(ContentType.JSON);
 	//	response = request.get();
 	}
 
@@ -64,7 +66,7 @@ public class TestSteps {
 	public void sendRequestPut() {
 			response = RestAssured.given().log().all().contentType(ContentType.JSON).
 					body("{\r\n"
-							+ "  \"description\": \"1a23d4\"\r\n"
+							+ "  \"description\": \""+ value +"\"\r\n"
 							+ "}").put("/"+sys_id);
 			
 	}
@@ -72,10 +74,10 @@ public class TestSteps {
 	
 	@When("send the pre get request")
 	public void sendPreRequest() {
-		response = RestAssured.given().log().all().get("/"+sys_id);
+		response = RestAssured.given().contentType(ContentType.JSON).log().all().get("/"+sys_id);
 		response.then().log().all();
 //		 sys_id = response.jsonPath().get("result.sys_id");
-		System.out.println(response.jsonPath().get("result.number"));
+		System.out.println(response.jsonPath().get("result.sys_id"));
 	}
 
 	@When("send the post get request")
@@ -121,6 +123,7 @@ public class TestSteps {
 		response = request.body("{\"short_description\":\"" + short_desc + "\",\"category\":\"" + category + "\"}")
 				.post();
 		sys_id = response.jsonPath().get("result.sys_id");
+		System.out.println(sys_id);
 		
 	}
 				
@@ -200,5 +203,20 @@ public class TestSteps {
 					
 		
 				}}
+		
+		
+		@Then("validate the response7 for below")
+		public void validateRespose7StringForMulti(DataTable dt) {
+	
+			Map<String, String> asMap = dt.asMap();
+			for (Entry<String, String> eachEntry : asMap.entrySet()) {
+
+				response.then().log().all().body(eachEntry.getKey(), Matchers.equalTo(value));
+					
+		
+				}
+		
+		
+		}	
 		
 }
